@@ -87,6 +87,9 @@ def main():
         
         acciones.sleep(15)
         acciones.enviardatos(email)
+        db.iniciarDB()
+        db.updateOne("accountmanager",id,"acc_estado",5)
+        db.cerrarConexion()
         return True
     try:
         iniciarSpotify (email,passw)
