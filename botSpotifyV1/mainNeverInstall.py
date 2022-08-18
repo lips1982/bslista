@@ -31,13 +31,13 @@ def main():
     id=[]
     passw=[]
 
-    result= db.findby2("accountmanager","acc_estado",1,"pais","US")
+    result= db.findby2("accountmanager","acc_estado",4,"pais","US")
 
     for elem in result:
         email= (elem["email"])
         id=(elem["_id"])
         passw =(elem["pass"])
-        db.updateOne("accountmanager",id,"acc_estado",3)
+        db.updateOne("accountmanager",id,"acc_estado",1)
         db.updateOne("accountmanager",id,"datelogin",time.time())  
         #for elemid in id:
         #    db.updateOne("accountmanager",elemid,"creacionlistasentrenamiento",2)
