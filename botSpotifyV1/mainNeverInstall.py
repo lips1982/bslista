@@ -21,9 +21,11 @@ def main():
 
     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
     
-    time.sleep (random.randint(1,4))
+    time.sleep (random.randint(1,15))
     hilos=1
-    time.sleep (random.randint(1,5))
+    time.sleep (random.randint(1,15))
+    time.sleep (random.randint(1,15))
+    time.sleep (random.randint(1,15))
 
     db=MongoDB(hilos)
     db.iniciarDB()
