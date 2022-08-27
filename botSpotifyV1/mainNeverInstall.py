@@ -98,11 +98,12 @@ def main():
 
     except Exception as e:
         with open(os.path.join(pathImg,f"error.txt"), 'w') as f:
-            f.write(str(e))        
+            f.write(str(e))  
+        pyautogui.screenshot(os.path.join(pathImg,f"{error}.png"))      
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",13)
         db.cerrarConexion()
-        error= "error.txt"
+        error= "error.png"
         enviaremailerror(email,error)
 
     display.stop()
