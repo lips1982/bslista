@@ -47,7 +47,7 @@ def enviaremailerror(email,adjunto):
     sesion_smtp.starttls()
 
     # Iniciamos sesión en el servidor
-    sesion_smtp.login('azuresilk02@gmail.com','iyuwppjjgfshypht')
+    sesion_smtp.login('mayfeljonas1229@gmail.com','dudwvopyazvtxtun')
 
     # Convertimos el objeto mensaje a texto
     texto = mensaje.as_string()
