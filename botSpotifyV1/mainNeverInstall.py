@@ -21,12 +21,8 @@ def main():
 
     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
     
-    time.sleep (random.randint(1,15))
+    
     hilos=1
-    time.sleep (random.randint(1,15))
-    time.sleep (random.randint(1,15))
-    time.sleep (random.randint(1,15))
-
     db=MongoDB(hilos)
     db.iniciarDB()
     email=[]
@@ -44,7 +40,9 @@ def main():
         #for elemid in id:
         #    db.updateOne("accountmanager",elemid,"creacionlistasentrenamiento",2)
         db.cerrarConexion()
-
+    with open((os.path.join(pathImg,f"log.txt")), "a") as f:
+            f.write(f"({email} {passw}\n")
+            f.close()
     def iniciarSpotify(email,password):
         
         driver = BaseConexion().conexionChrome()
@@ -73,11 +71,9 @@ def main():
                 i=4
         time.sleep(10)    
   
-        if returnLoginSpotify == True:
-            print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
-            pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
-            loging= f"01-{email}-loging.png"
-            enviaremailerror(email,loging, password)  
+        pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
+        loging= f"01-{email}-loging.png"
+        enviaremailerror(email,loging, password)  
         
         acciones.sleep(10)
         '''
