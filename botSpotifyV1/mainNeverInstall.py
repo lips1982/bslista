@@ -70,12 +70,22 @@ def main():
             else:
                 i=4
         time.sleep(10)    
-  
-        pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
-        loging= f"01-{email}-loging.png"
-        enviaremailerror(email,loging, password)  
-        
-        acciones.sleep(10)
+
+        if acciones.checklogingok() == True:
+            db.iniciarDB()
+            db.updateOne("accountmanager",id,"acc_estado",19)
+            db.cerrarConexion()
+            exit()
+
+        if returnLoginSpotify == True:
+            print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
+            pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
+            loging= f"01-{email}-loging.png"
+            enviaremailerror(email,loging, password)  
+            db.iniciarDB()
+            db.updateOne("accountmanager",id,"acc_estado",1)
+            db.cerrarConexion()
+        acciones.sleep(2)
         '''
         acciones.nuevalistanombre()
         #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-nombbrelistacreada.png"))

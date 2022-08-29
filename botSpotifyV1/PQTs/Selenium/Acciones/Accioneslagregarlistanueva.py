@@ -26,7 +26,13 @@ class Acciones(BaseAcciones):
             self.salir()
             return False
 
-
+    def checklogingok(self):
+        xpatherrorpass = (By.XPATH,'//*[@id="root"]/div/div[2]/div/div/div[1]/span')
+        visibleErrorloging = self.explicitWaitElementoVisibility(10,xpatherrorpass)
+        if visibleErrorloging:
+            return True
+        else:
+            return False
     def loginSpotify(self,cuenta,password):
         try:
             xpathInputEmail = (By.ID,"login-username")
