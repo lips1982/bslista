@@ -70,7 +70,7 @@ def main():
                 returnLoginSpotify= acciones.loginSpotify(email,password)
                 i+=1
             else:
-                break
+                i=4
         time.sleep(10)    
   
         if returnLoginSpotify == True:
