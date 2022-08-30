@@ -35,14 +35,12 @@ def main():
         email= (elem["email"])
         id=(elem["_id"])
         passw =(elem["pass"])
-        db.updateOne("accountmanager",id,"acc_estado",13)
+        db.updateOne("accountmanager",id,"acc_estado",2)
         db.updateOne("accountmanager",id,"datelogin",time.time())  
         #for elemid in id:
         #    db.updateOne("accountmanager",elemid,"creacionlistasentrenamiento",2)
         db.cerrarConexion()
-    with open((os.path.join(pathImg,f"log.txt")), "a") as f:
-            f.write(f"({email} {passw}\n")
-            f.close()
+
     def iniciarSpotify(email,password):
         
         driver = BaseConexion().conexionChrome()
@@ -70,14 +68,14 @@ def main():
             else:
                 i=4
         time.sleep(10)    
-
-        if acciones.checklogingok() == True:
+        ckecloging= acciones.checklogingok()
+        if ckecloging == True:
             db.iniciarDB()
-            db.updateOne("accountmanager",id,"acc_estado",19)
+            db.updateOne("accountmanager",id,"ckeclog","logfail")
             db.cerrarConexion()
             exit()
 
-        if returnLoginSpotify == True:
+        if ckecloging == False:
             print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
             pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
             loging= f"01-{email}-loging.png"
