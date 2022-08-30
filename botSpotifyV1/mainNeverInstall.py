@@ -100,7 +100,7 @@ def main():
         acciones.enviardatos(email)
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",5)
-        urllistaReproduccion=acciones.getUrlLista
+        urllistaReproduccion=acciones.getUrlLista()
         db.updateOne("accountmanager",id,"urllista",urllistaReproduccion)
         db.cerrarConexion()
         return True        
