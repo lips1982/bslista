@@ -71,7 +71,7 @@ def main():
         ckecloging= acciones.checklogingok()
         if ckecloging == True:
             db.iniciarDB()
-            db.updateOne("accountmanager",id,"ckeclog","logfail")
+            db.updateOne("accountmanager",id,)
             db.cerrarConexion()
             exit()
 

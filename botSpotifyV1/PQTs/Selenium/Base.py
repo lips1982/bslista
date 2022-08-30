@@ -83,8 +83,8 @@ class BaseAcciones():
     def clear(self,el):
          self.findElement(el).clear()
 
-    def geturl(self,el):
-        url = self.current_url
+    def geturl(self):
+        url = self.driver.current_url
         return url
     def refreshweb(self):
         self.driver.refresh()
