@@ -33,6 +33,11 @@ class Acciones(BaseAcciones):
             return True
         else:
             return False
+
+    def getUrlLista(self):
+        urllista=self.geturl()
+        return urllista
+
     def loginSpotify(self,cuenta,password):
         try:
             xpathInputEmail = (By.ID,"login-username")
