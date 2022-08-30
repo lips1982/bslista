@@ -76,15 +76,16 @@ def main():
             exit()
 
         if ckecloging == False:
-            print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
-            pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
-            loging= f"01-{email}-loging.png"
-            enviaremailerror(email,loging, password)  
+            #print(f"Hilo {email} - SinginSpotify {returnLoginSpotify}")
+            #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-loging.png"))
+            #loging= f"01-{email}-loging.png"
+            #enviaremailerror(email,loging, password)  
             db.iniciarDB()
-            db.updateOne("accountmanager",id,"acc_estado",1)
+            db.updateOne("accountmanager",id,"ckeclog","logingok")
             db.cerrarConexion()
-        acciones.sleep(2)
-        '''
+        acciones.sleep(4)
+        acciones.refreshweb()
+        acciones.sleep(10)
         acciones.nuevalistanombre()
         #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-nombbrelistacreada.png"))
         acciones.buscaryagregarartista()
@@ -100,7 +101,7 @@ def main():
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",5)
         db.cerrarConexion()
-        return True'''        
+        return True        
     try:
         iniciarSpotify (email,passw)
 
