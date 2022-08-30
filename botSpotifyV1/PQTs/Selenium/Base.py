@@ -84,7 +84,7 @@ class BaseAcciones():
          self.findElement(el).clear()
 
     def geturl(self,el):
-        url = self.getCurrentUrl()
+        url = self.current_url
         return url
     def refreshweb(self):
         self.driver.refresh()
