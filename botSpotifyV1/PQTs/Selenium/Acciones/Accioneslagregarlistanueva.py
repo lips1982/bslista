@@ -14,7 +14,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-
+from PQTs.Utilizar import sendermail
 class Acciones(BaseAcciones):
     def ingresarSpotify(self):
         try:
@@ -248,7 +248,9 @@ class Acciones(BaseAcciones):
 
 
     def enviardatos(self,email):
-        remitente = 'mayfeljonas1229@gmail.com'
+        emailsender=random.choice(sendermail)
+        corre, contrase = emailsender    
+        remitente = corre
         destinatarios = ['azuresilkmain@gmail.com']
         asunto = f'Lista de reproduccion : {email}'
         cuerpo = f"{str(datetime.datetime.now().strftime('%H-%M-%S'))}"
@@ -287,7 +289,7 @@ class Acciones(BaseAcciones):
         sesion_smtp.starttls()
 
         # Iniciamos sesión en el servidor
-        sesion_smtp.login('mayfeljonas1229@gmail.com','dudwvopyazvtxtun')
+        sesion_smtp.login(corre,contrase)
 
         # Convertimos el objeto mensaje a texto
         texto = mensaje.as_string()
