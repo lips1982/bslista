@@ -29,7 +29,7 @@ def main():
     id=[]
     passw=[]
 
-    result= db.findby1("accountmanager","acc_estado",0)
+    result= db.findby1("accountmanager","acc_estado",1)
     print (result)
     for elem in result:
         email= (elem["email"])
@@ -72,7 +72,7 @@ def main():
         if ckecloging == True:
             db.iniciarDB()
             db.updateOne("accountmanager",id,"ckeclog","logfail")
-            db.updateOne("accountmanager",id,"acc_estado",9)
+            db.updateOne("accountmanager",id,"acc_estado",0)
             db.cerrarConexion()
             exit()
 
@@ -113,7 +113,7 @@ def main():
             f.write(str(e))  
         pyautogui.screenshot(os.path.join(pathImg,f"error.png"))      
         db.iniciarDB()
-        db.updateOne("accountmanager",id,"acc_estado",13)
+        db.updateOne("accountmanager",id,"acc_estado",3)
         db.cerrarConexion()
         adjunto= "error.png"
         enviaremailerror(email,adjunto,passw,e)
