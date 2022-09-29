@@ -127,13 +127,14 @@ class Acciones(BaseAcciones):
 
 
         miscanciones=[
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[2]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[3]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[4]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[5]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[6]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[7]/div/div[3]/button'
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[2]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[3]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[4]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[5]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[6]/div/div[3]/button',
+        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[7]/div/div[3]/button',
+
         ]
         itemsagregar=[
          '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[3]/div/div[1]/div[2]/div',
@@ -158,13 +159,12 @@ class Acciones(BaseAcciones):
 
         xpathbuscarartista=(By.XPATH,"//input[@role='searchbox']")
 
-        xpathalbumSilkLipsMusic=(By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[1]/div/p[1]')
-               
+        xpathalbumSilkLipsMusic=(By.XPATH,'//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[3]/button')
+                                           
         body=(By.XPATH,'/html/body')
 
         visiblebuscarartista= self.explicitWaitElementoVisibility(1200,xpathbuscarartista)
         if visiblebuscarartista:
-            
             for  elem in mylistartistaok1:
                 if elem =='SilkLipsMusicX1':
                     try:
