@@ -14,9 +14,9 @@ from PQTs.Selenium.Acciones.enviaremail import enviaremailerror
 def main():
 
 
-    #display = Display(visible=True, size=(1900,1268), backend="xvfb", use_xauth=True)
+    display = Display(visible=True, size=(1900,1268), backend="xvfb", use_xauth=True)
 
-    #display.start()
+    display.start()
 
 
     pyautogui._pyautogui_x11._display = Xlib.display.Display(os.environ['DISPLAY'])
@@ -29,7 +29,7 @@ def main():
     id=[]
     passw=[]
 
-    result= db.findby1("accountmanager","acc_estado",2)
+    result= db.findby1("accountmanager","acc_estado",1)
     print (result)
     for elem in result:
         email= (elem["email"])
@@ -119,12 +119,12 @@ def main():
         adjunto= "error.png"
         enviaremailerror(email,adjunto,passw,e)
     
-    #display.stop()
+    display.stop()
 
 if __name__ == '__main__':
     try:
         main()
     except Exception as e:
         print (e)
-        #with open(os.path.join(pathImg,f"error.txt"), 'w') as f:
-        #    f.write(str(e))  
+        with open(os.path.join(pathImg,f"error.txt"), 'w') as f:
+            f.write(str(e))  
