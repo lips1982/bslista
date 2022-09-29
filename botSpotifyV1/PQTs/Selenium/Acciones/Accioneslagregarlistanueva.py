@@ -74,7 +74,7 @@ class Acciones(BaseAcciones):
     def nuevalistanombre(self):
 
         try:                             
-            xpathnuevalista = (By.XPATH,"//*[@id='main']/div/div[2]/nav/div[1]/div[2]/div/div[1]/button") 
+            xpathnuevalista = (By.XPATH, "//button[@data-testid='create-playlist-button']")
             xpathmyplaylist01 = (By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[1]/div[5]/span/button/span/h1') 
             self.sleep(10)
             try:
