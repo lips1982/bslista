@@ -88,6 +88,7 @@ def main():
         acciones.refreshweb()
         acciones.sleep(10)
         acciones.nuevalistanombre()
+        acciones.sleep(5)
         #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-nombbrelistacreada.png"))
         acciones.buscaryagregarartista()
         acciones.sleep(3)

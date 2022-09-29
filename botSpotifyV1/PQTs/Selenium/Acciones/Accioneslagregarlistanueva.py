@@ -75,33 +75,35 @@ class Acciones(BaseAcciones):
 
         try:                             
             xpathnuevalista = (By.XPATH, "//button[@data-testid='create-playlist-button']")
-            xpathmyplaylist01 = (By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[1]/div[5]/span/button/span/h1') 
-            self.sleep(10)
-            try:
+            xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
+            xpathmyplaylist01= (By.XPATH, "//button[@class='wCkmVGEQh3je1hrbsFBY']")
+
+            Visiblenuevalista= self.explicitWaitElementoVisibility(25,xpathnuevalista)
+            if Visiblenuevalista:
                 self.click(xpathnuevalista)
-            except:
-                self.refreshweb()
-                time.sleep(10)
-                self.click(xpathnuevalista)
-            self.sleep(10)
-            try:
-                self.click(xpathmyplaylist01)
-            except:
-                self.refreshweb()
-                time.sleep(15)
-                self.click(xpathmyplaylist01)
-            self.sleep(10)
-            
-            namelista=random.choice(namelistareproduccion)
-            pyautogui.write(namelista, interval=0.25)
-            self.sleep(4)
-            pyautogui.press('tab')
-            self.sleep(3)
-            pyautogui.press('tab')
-            self.sleep(3)
-            pyautogui.press('enter')
-            self.sleep(4)
-            
+
+                Visiblexpathlistas = self.explicitWaitElementoVisibility(25,xpathlistas)
+
+                if Visiblexpathlistas:
+                    listacancio= self.findElements(xpathlistas)
+                    print (listacancio)
+                    
+                    for elem in listacancio:
+                        elem.click()            
+                        Visiblenuevalista= self.explicitWaitElementoVisibility(25,xpathmyplaylist01)
+                        if Visiblenuevalista:
+                            self.click(xpathmyplaylist01)
+                            self.sleep(10)
+                            namelista=random.choice(namelistareproduccion)
+                            pyautogui.write(namelista, interval=0.25)
+                            self.sleep(4)
+                            pyautogui.press('tab')
+                            self.sleep(3)
+                            pyautogui.press('tab')
+                            self.sleep(3)
+                            pyautogui.press('enter')
+                            self.sleep(4)
+
             return True
             
 
@@ -155,7 +157,7 @@ class Acciones(BaseAcciones):
             with open(os.path.join(pathImg,f"logerror-{str(datetime.datetime.now().strftime('%H-%M-%S'))}.txt"), 'w') as f:
                 f.write(str(e))
 
-        xpathbuscarartista=(By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/section/div/div/input')
+        xpathbuscarartista=(By.XPATH,"//button[@role='searchbox']")
         
         xpathalbumSilkLipsMusic=(By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[1]/div/p[1]')
                
