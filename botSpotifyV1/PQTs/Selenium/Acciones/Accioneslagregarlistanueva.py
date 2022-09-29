@@ -89,7 +89,8 @@ class Acciones(BaseAcciones):
                     print (listacancio)
                     
                     for elem in listacancio:
-                        elem.click()            
+                        elem.click()   
+                        time.sleep(8)         
                         Visiblenuevalista= self.explicitWaitElementoVisibility(25,xpathmyplaylist01)
                         if Visiblenuevalista:
                             self.click(xpathmyplaylist01)
@@ -108,8 +109,7 @@ class Acciones(BaseAcciones):
             
 
         except Exception as e:
-            with open(os.path.join(pathImg,f"logerror.txt"), 'w') as f:
-                f.write(str(e))
+            print (e)
 
 
     def buscaryagregarartista(self):
@@ -154,11 +154,10 @@ class Acciones(BaseAcciones):
             mylistartistaok1=random.sample(mylistartistas, 6)
             print (mylistartistaok1)
         except Exception as e:
-            with open(os.path.join(pathImg,f"logerror-{str(datetime.datetime.now().strftime('%H-%M-%S'))}.txt"), 'w') as f:
-                f.write(str(e))
+            print (e)
 
-        xpathbuscarartista=(By.XPATH,"//button[@role='searchbox']")
-        
+        xpathbuscarartista=(By.XPATH,"//input[@role='searchbox']")
+
         xpathalbumSilkLipsMusic=(By.XPATH,'//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[1]/div/p[1]')
                
         body=(By.XPATH,'/html/body')
@@ -188,8 +187,7 @@ class Acciones(BaseAcciones):
                         #self.click(xpathcancion)   
                         #print("click cancion1_3") 
                     except Exception as e:
-                        with open(os.path.join(pathImg,f"logerror-{str(datetime.datetime.now().strftime('%H-%M-%S'))}.txt"), 'w') as f:
-                            f.write(f"{e} --- {elem} --- {xpathcancion}")                   
+                        print (e)                 
                 
                 elif elem =='SilkLipsMusicX2':
                     try:
@@ -215,8 +213,7 @@ class Acciones(BaseAcciones):
                         #self.click(xpathcancion) 
                         #print("click cancion2_4") 
                     except Exception as e:
-                        with open(os.path.join(pathImg,f"logerror-{str(datetime.datetime.now().strftime('%H-%M-%S'))}.txt"), 'w') as f:
-                            f.write(f"{e} --- {elem} --- {xpathcancion}")                                                               
+                        print (e)                                                            
                 else:
                     self.clear(xpathbuscarartista)
                     time.sleep(1)
@@ -231,23 +228,22 @@ class Acciones(BaseAcciones):
                         time.sleep(2)
                         print('Agregando 1 canciones del artista',elem)  
                     except Exception as e:
-                        with open(os.path.join(pathImg,f"logerror-{str(datetime.datetime.now().strftime('%H-%M-%S'))}.txt"), 'w') as f:
-                            f.write(f"{e} --- {elem} --- {xpathcancion}")
+                        print (e)
         else:
             print(f"visibleNuevalista {visiblebuscarartista}")            
 
 
 
     def abrirlistareproduccion(self):
-        xpathlistadereproduccion= (By.XPATH,'//*[@id="main"]/div/div[2]/nav/div[1]/div[2]/div/div[4]/div[4]/div/div/ul/div/div[2]/div/li') 
-        try:
-            self.click(xpathlistadereproduccion)
-        except:
-            self.refreshweb()
-            time.sleep(10)
-            self.click(xpathlistadereproduccion)
-            
+        xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
+ 
+        Visiblexpathlistas = self.explicitWaitElementoVisibility(25,xpathlistas)
 
+        if Visiblexpathlistas:
+            listacancio= self.findElements(xpathlistas)
+            print (listacancio)            
+            for elem in listacancio:
+                elem.click()        
 
     def enviardatos(self,email):
         emailsender=random.choice(sendermail)
