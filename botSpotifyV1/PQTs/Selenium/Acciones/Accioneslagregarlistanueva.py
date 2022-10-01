@@ -163,43 +163,37 @@ class Acciones(BaseAcciones):
                                            
         body=(By.XPATH,'/html/body')
 
-        visiblebuscarartista= self.explicitWaitElementoVisibility(1200,xpathbuscarartista)
+        visiblebuscarartista= self.explicitWaitElementoVisibility(35,xpathbuscarartista)
         if visiblebuscarartista:
             for  elem in mylistartistaok1:
                 if elem =='SilkLipsMusicX1':
                     try:
                         self.clear(xpathbuscarartista)
                         self.escribir(xpathbuscarartista,"SilkLipsMusicX")
-                        Visiblealbum = self.explicitWaitElementoVisibility(15,xpathalbumSilkLipsMusic)
+                        Visiblealbum = self.explicitWaitElementoVisibility(25,xpathalbumSilkLipsMusic)
 
-                        if Visiblelistareproduccion:
+                        if Visiblealbum:
                             print ("visible lista de canciones")
                             listaresultado= self.findElements(xpathalbumSilkLipsMusic)
                             listaresultado[0].click()
-
-
-
-
-                        time.sleep(10)
-                        self.pagedown(body)
-                        self.sleep(4)
-                        
-                        self.click(xpathalbumSilkLipsMusic)
-                        time.sleep(4)
-                        xpathcancion=(By.XPATH,cancion1[0])
-                        self.click(xpathcancion)
-                        print("click cancion1_1")
-                        time.sleep(4)
-                        xpathcancion=(By.XPATH,cancion1[1] )
-                        self.click(xpathcancion)
-                        print("click cancion1_2")   
-                        time.sleep(4)
-                        #xpathcancion=(By.XPATH,cancion1[2])
-                        #self.click(xpathcancion)   
-                        #print("click cancion1_3") 
+                            
+                            Visiblecancion=(By.XPATH,cancion1[0])
+                            Visiblecancion = self.explicitWaitElementoVisibility(25,xpathcancion)
+                            if Visiblealbum:
+                                self.click(xpathcancion)
+                            print("click cancion1_1")
+                            time.sleep(4)
+                            xpathcancion=(By.XPATH,cancion1[1])
+                            Visiblecancion = self.explicitWaitElementoVisibility(25,xpathcancion)
+                            if Visiblecancion:
+                                self.click(xpathcancion)
+                            time.sleep(4)
+                            #xpathcancion=(By.XPATH,cancion1[2])
+                            #self.click(xpathcancion)   
+                            #print("click cancion1_3") 
                     except Exception as e:
                         print (e)                 
-                
+                    
                 elif elem =='SilkLipsMusicX2':
                     try:
                         self.clear(xpathbuscarartista)
