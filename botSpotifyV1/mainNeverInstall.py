@@ -87,6 +87,8 @@ def main():
         acciones.sleep(4)
         acciones.refreshweb()
         acciones.sleep(10)
+        acciones.borrarlista()
+        acciones.sleep(10)
         acciones.nuevalistanombre()
         acciones.sleep(5)
         #pyautogui.screenshot(os.path.join(pathImg,f"01-{email}-nombbrelistacreada.png"))
