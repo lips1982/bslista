@@ -99,6 +99,10 @@ def main():
         
         while chequear==False:
             acciones.borrarlista()
+            time.sleep(4)
+            acciones.nuevalistanombre()
+            time.sleep(4)
+            acciones.buscaryagregarartista()
             chequear=acciones.abrirlistareproduccion()
 
         acciones.sleep(20)
