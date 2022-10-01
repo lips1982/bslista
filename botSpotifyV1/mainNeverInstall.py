@@ -108,7 +108,7 @@ def main():
 
         acciones.sleep(20)
         pyautogui.screenshot(os.path.join(pathImg,f"{email}.png"))
-        
+        print("todo correcto")
         acciones.sleep(20)
         acciones.enviardatos(email)
         db.iniciarDB()
@@ -122,14 +122,14 @@ def main():
 
     except Exception as e:
         print(e)
-        #with open(os.path.join(pathImg,f"error.txt"), 'w') as f:
-        #    f.write(str(e))  
+        with open(os.path.join(pathImg,f"error.txt"), 'w') as f:
+            f.write(str(e))  
         pyautogui.screenshot(os.path.join(pathImg,f"error.png"))      
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",3)
         db.cerrarConexion()
         adjunto= "error.png"
-        #enviaremailerror(email,adjunto,passw,e)
+        enviaremailerror(email,adjunto,passw,e)
     
     #display.stop()
 

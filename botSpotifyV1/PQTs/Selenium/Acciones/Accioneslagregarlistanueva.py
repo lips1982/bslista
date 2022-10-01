@@ -127,27 +127,15 @@ class Acciones(BaseAcciones):
         "Beyoncé - Single Ladies","NSYNC - Its Gonna Be Me","Rihanna - Umbrella","Rihanna - We Found Love","Alicia Keys - If I Aint Got You"]
 
 
-        miscanciones=[
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[2]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[3]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[4]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[5]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[6]/div/div[3]/button',
-        '//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[7]/div/div[3]/button',
 
-        ]
         itemsagregar=[
          '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[3]/div/div[1]/div[2]/div',
          '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[4]/div/div[1]/div[2]/div',
-         '//button[text()="Añadir"]'
+         '//button[text()="Add"]'
         ]
           
         try: 
             mylistartistaok1=[]
-            miscancionesrandom=random.sample(miscanciones, 4)        
-
-
             mylistartistas=random.sample(listartistas, 4)
             mylistartistas.append("CANCION")
             mylistartistas.append("CANCION")
@@ -226,6 +214,8 @@ class Acciones(BaseAcciones):
 
 
     def abrirlistareproduccion(self):
+        self.ir("https://open.spotify.com/")
+        time.sleep(7)
         xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
         xpathcorazones=(By.XPATH,"//span[@class='Type__TypeElement-goli3j-0 eDbSCl']") 
         Visiblexpathlistas = self.explicitWaitElementoVisibility(25,xpathlistas)
@@ -251,7 +241,7 @@ class Acciones(BaseAcciones):
             time.sleep(3)                            
             xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
             xpathtrespuntos=  (By.XPATH, "//button[@aria-haspopup='menu' and @class='T0anrkk_QA4IAQL29get']")
-            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Eliminar')]")
+            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Delete')]")
             
             Visiblelistareproduccion = self.explicitWaitElementoVisibility(15,xpathlistas)
 
