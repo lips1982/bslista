@@ -113,6 +113,7 @@ class Acciones(BaseAcciones):
 
 
     def buscaryagregarartista(self):
+
         listartistas=[ 
         "Love Is Gone","You Are The Reason","When We Were Young","I Love You 3000","When I Look At You",
         "Impossible","When You Say Nothing At All","MEMORIES","Thank U, Next","A Thousand Years","Perfect","Shallow","Need You Now","On My Way - Alan Walker",
@@ -142,7 +143,10 @@ class Acciones(BaseAcciones):
          '//button[text()="Add"]'
         ]
           
-        try:  
+        try: 
+            miscanciones1=[] 
+            miscanciones2=[]
+            mylistartistaok1=[]
             miscancionesrandom=random.sample(miscanciones, 7)        
             miscanciones1=miscancionesrandom[0:3]
             miscanciones2=miscancionesrandom[3:7]
