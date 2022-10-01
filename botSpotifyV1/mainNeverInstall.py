@@ -103,6 +103,7 @@ def main():
             acciones.nuevalistanombre()
             time.sleep(4)
             acciones.buscaryagregarartista()
+            time.sleep(4)
             chequear=acciones.abrirlistareproduccion()
 
         acciones.sleep(20)
