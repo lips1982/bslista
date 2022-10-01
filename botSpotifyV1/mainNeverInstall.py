@@ -93,12 +93,16 @@ def main():
         acciones.buscaryagregarartista()
         acciones.sleep(3)
 
-        acciones.abrirlistareproduccion()
+        chequear=acciones.abrirlistareproduccion()
         
-        acciones.sleep(15)
+        while chequear==False:
+            acciones.borrarlista()
+            chequear=acciones.abrirlistareproduccion()
+
+        acciones.sleep(20)
         pyautogui.screenshot(os.path.join(pathImg,f"{email}.png"))
         
-        acciones.sleep(15)
+        acciones.sleep(20)
         acciones.enviardatos(email)
         db.iniciarDB()
         db.updateOne("accountmanager",id,"acc_estado",5)

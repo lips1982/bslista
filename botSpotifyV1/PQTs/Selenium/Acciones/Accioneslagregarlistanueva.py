@@ -241,7 +241,7 @@ class Acciones(BaseAcciones):
 
     def abrirlistareproduccion(self):
         xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
- 
+        xpathcorazones=(By.XPATH,"//button[@class='Fm7C3gdh5Lsc9qSXrQwO tGKwoPuvNBNK3TzCS5OH' and @aria-checked='false']") 
         Visiblexpathlistas = self.explicitWaitElementoVisibility(25,xpathlistas)
 
         if Visiblexpathlistas:
@@ -249,6 +249,47 @@ class Acciones(BaseAcciones):
             print (listacancio)            
             for elem in listacancio:
                 elem.click()        
+                listacanciones = self.explicitWaitElementoInvisibility(15,xpathcorazones)
+                if listacanciones:
+                    print ("visible lista de canciones")
+                    listacancio= self.findElements(xpathcorazones)
+                    print (listacancio)
+                    if len(listacancio) < 8:  # OJO PARA NUEVOS ALBUNES SE DEBE AJUSTAR EL VALOR
+                        return False
+
+    def borrarlista(self):
+        try: 
+
+            time.sleep(3)                            
+            xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
+            xpathtrespuntos=  (By.XPATH, "//button[@aria-haspopup='menu' and @class='T0anrkk_QA4IAQL29get']")
+            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Delete')]")
+            
+            Visiblelistareproduccion = self.explicitWaitElementoVisibility(15,xpathlistas)
+
+            if Visiblelistareproduccion:
+                print ("visible lista de canciones")
+                listacancio= self.findElements(xpathlistas)
+                print (listacancio)
+                
+                for elem in listacancio:
+                    elem.click()
+
+                    Visibletrespuntos = self.explicitWaitElementoVisibility(15,xpathtrespuntos)
+                    if Visibletrespuntos:
+                        self.click(xpathtrespuntos)
+                        Visibledelete = self.explicitWaitElementoVisibility(15,xpathtdelete)
+                        if Visibledelete:
+                            self.click(xpathtdelete)
+                            time.sleep(3)
+                            pyautogui.press('enter')
+            time.sleep(10)                            
+            print ("Saliendo ....")
+            
+
+        except Exception as e:
+            print(e)
+
 
     def enviardatos(self,email):
         emailsender=random.choice(sendermail)
