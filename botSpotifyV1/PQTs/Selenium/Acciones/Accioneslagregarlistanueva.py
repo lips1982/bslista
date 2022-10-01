@@ -159,7 +159,7 @@ class Acciones(BaseAcciones):
 
         xpathbuscarartista=(By.XPATH,"//input[@role='searchbox']")
 
-        xpathalbumSilkLipsMusic=(By.XPATH,'//*[@id="main"]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div/main/div/section/div[2]/div[3]/div/div/div/div[2]/div[1]/div/div[3]/button')
+        xpathalbumSilkLipsMusic=(By.XPATH,"//button[@class='VhJnuS7UcUPfIlzD8dlU']")
                                            
         body=(By.XPATH,'/html/body')
 
@@ -170,9 +170,20 @@ class Acciones(BaseAcciones):
                     try:
                         self.clear(xpathbuscarartista)
                         self.escribir(xpathbuscarartista,"SilkLipsMusicX")
+                        Visiblealbum = self.explicitWaitElementoVisibility(15,xpathalbumSilkLipsMusic)
+
+                        if Visiblelistareproduccion:
+                            print ("visible lista de canciones")
+                            listaresultado= self.findElements(xpathalbumSilkLipsMusic)
+                            listaresultado[0].click()
+
+
+
+
                         time.sleep(10)
                         self.pagedown(body)
                         self.sleep(4)
+                        
                         self.click(xpathalbumSilkLipsMusic)
                         time.sleep(4)
                         xpathcancion=(By.XPATH,cancion1[0])
