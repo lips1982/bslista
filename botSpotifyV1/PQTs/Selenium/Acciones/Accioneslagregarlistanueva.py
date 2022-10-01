@@ -140,23 +140,21 @@ class Acciones(BaseAcciones):
         itemsagregar=[
          '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[3]/div/div[1]/div[2]/div',
          '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[4]/div/div[1]/div[2]/div',
-         '//button[text()="Add"]'
+         '//button[text()="Añadir"]'
         ]
           
         try: 
-            miscanciones1=[] 
-            miscanciones2=[]
             mylistartistaok1=[]
-            miscancionesrandom=random.sample(miscanciones, 7)        
-            miscanciones1=miscancionesrandom[0:3]
-            miscanciones2=miscancionesrandom[3:7]
-            cancion1=random.sample(miscanciones1, 3)
-            cancion2=random.sample(miscanciones2, 4)
+            miscancionesrandom=random.sample(miscanciones, 4)        
+
 
             mylistartistas=random.sample(listartistas, 4)
-            mylistartistas.append("SilkLipsMusicX1")
-            mylistartistas.append("SilkLipsMusicX2")
-            mylistartistaok1=random.sample(mylistartistas, 6)
+            mylistartistas.append("CANCION")
+            mylistartistas.append("CANCION")
+            mylistartistas.append("CANCION")
+            mylistartistas.append("CANCION")
+            mylistartistaok=random.sample(mylistartistas, 8)
+            mylistartistaok1=random.sample(mylistartistaok, 8)
             print (mylistartistaok1)
         except Exception as e:
             print (e)
@@ -164,66 +162,47 @@ class Acciones(BaseAcciones):
         xpathbuscarartista=(By.XPATH,"//input[@role='searchbox']")
 
         xpathalbumSilkLipsMusic=(By.XPATH,"//button[@class='VhJnuS7UcUPfIlzD8dlU']")
-                                           
+        xpathlistacanciones =  (By.XPATH,  "//button[@data-testid='add-to-playlist-button']")                                  
         body=(By.XPATH,'/html/body')
-
+        indicelistacanciones=[0,1,2,3,4,5,6]
         visiblebuscarartista= self.explicitWaitElementoVisibility(35,xpathbuscarartista)
         if visiblebuscarartista:
             for  elem in mylistartistaok1:
-                if elem =='SilkLipsMusicX1':
+                if elem =='CANCION':
                     try:
                         self.clear(xpathbuscarartista)
                         self.escribir(xpathbuscarartista,"SilkLipsMusicX")
+                        time.sleep(3)
+                        pyautogui.press('pgdn')
+                        time.sleep(1)
+                        pyautogui.press('pgdn')
                         Visiblealbum = self.explicitWaitElementoVisibility(25,xpathalbumSilkLipsMusic)
 
                         if Visiblealbum:
                             print ("visible lista de canciones")
                             listaresultado= self.findElements(xpathalbumSilkLipsMusic)
                             listaresultado[0].click()
-                            
-                            Visiblecancion=(By.XPATH,cancion1[0])
-                            Visiblecancion = self.explicitWaitElementoVisibility(25,xpathcancion)
-                            if Visiblealbum:
-                                self.click(xpathcancion)
-                            print("click cancion1_1")
-                            time.sleep(4)
-                            xpathcancion=(By.XPATH,cancion1[1])
-                            Visiblecancion = self.explicitWaitElementoVisibility(25,xpathcancion)
-                            if Visiblecancion:
-                                self.click(xpathcancion)
-                            time.sleep(4)
-                            #xpathcancion=(By.XPATH,cancion1[2])
-                            #self.click(xpathcancion)   
-                            #print("click cancion1_3") 
+                            time.sleep(5)
+                            Visiblelistacanciones = self.explicitWaitElementoVisibility(25,xpathlistacanciones)
+
+                            if Visiblelistacanciones:
+                                print ("visible lista de canciones")
+                                listaresultado= self.findElements(xpathlistacanciones)
+                                for item in listaresultado:
+                                    print (item)
+                                elem=indicelistacanciones.pop(random.randrange(len(indicelistacanciones))) 
+                                print(elem)
+                                listaresultado[elem].click()
+                                time.sleep (1) 
+                                self.clear(xpathbuscarartista)
+
+
                     except Exception as e:
                         print (e)                 
-                    
-                elif elem =='SilkLipsMusicX2':
-                    try:
-                        self.clear(xpathbuscarartista)
-                        time.sleep(1)
-                        self.escribir(xpathbuscarartista,'SilkLipsMusicX')
-                        time.sleep(10)
-                        self.click(xpathalbumSilkLipsMusic)
-                        time.sleep(3)
-                        xpathcancion=(By.XPATH,cancion2[0] )
-                        self.click(xpathcancion)
-                        print("click cancion2_1") 
-                        time.sleep(3)
-                        xpathcancion=(By.XPATH,cancion2[1] )
-                        self.click(xpathcancion)     
-                        print("click cancion2_2") 
-                        time.sleep(3)
-                        #xpathcancion=(By.XPATH,cancion2[2] )
-                        #self.click(xpathcancion)      
-                        #print("click cancion2_3") 
-                        #time.sleep(3)
-                        #xpathcancion=(By.XPATH,cancion2[3] )
-                        #self.click(xpathcancion) 
-                        #print("click cancion2_4") 
-                    except Exception as e:
-                        print (e)                                                            
+
+                               
                 else:
+                    time.sleep(1)
                     self.clear(xpathbuscarartista)
                     time.sleep(1)
                     self.escribir(xpathbuscarartista,elem)
@@ -233,9 +212,12 @@ class Acciones(BaseAcciones):
                         print ("artista ", elem)
                         xpathcancion=(By.XPATH,itemsagregar[i] )
                         self.click(xpathcancion)
+                        self.clear(xpathbuscarartista)
                         print("cancion agregada")
                         time.sleep(2)
                         print('Agregando 1 canciones del artista',elem)  
+                        time.sleep(1)
+                        self.clear(xpathbuscarartista)
                     except Exception as e:
                         print (e)
         else:
@@ -245,19 +227,21 @@ class Acciones(BaseAcciones):
 
     def abrirlistareproduccion(self):
         xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
-        xpathcorazones=(By.XPATH,"//button[@class='Fm7C3gdh5Lsc9qSXrQwO tGKwoPuvNBNK3TzCS5OH' and @aria-checked='false']") 
+        xpathcorazones=(By.XPATH,"//span[@class='Type__TypeElement-goli3j-0 eDbSCl']") 
         Visiblexpathlistas = self.explicitWaitElementoVisibility(25,xpathlistas)
 
         if Visiblexpathlistas:
             listacancio= self.findElements(xpathlistas)
             print (listacancio)            
             for elem in listacancio:
-                elem.click()        
+                elem.click()
+                time.sleep(10)        
                 listacanciones = self.explicitWaitElementoInvisibility(15,xpathcorazones)
                 if listacanciones:
                     print ("visible lista de canciones")
+                    time.sleep(5) 
                     listacancio= self.findElements(xpathcorazones)
-                    print (listacancio)
+                    print ("Se guardaron :", len(listacancio), "canciones")
                     if len(listacancio) < 8:  # OJO PARA NUEVOS ALBUNES SE DEBE AJUSTAR EL VALOR
                         return False
 
@@ -267,7 +251,7 @@ class Acciones(BaseAcciones):
             time.sleep(3)                            
             xpathlistas = (By.XPATH, "//li[@class='whXv9jYuEgS1DPTmPCe_' and @data-testid='rootlist-item']")
             xpathtrespuntos=  (By.XPATH, "//button[@aria-haspopup='menu' and @class='T0anrkk_QA4IAQL29get']")
-            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Delete')]")
+            xpathtdelete=  (By.XPATH, "//span[contains(text(),'Eliminar')]")
             
             Visiblelistareproduccion = self.explicitWaitElementoVisibility(15,xpathlistas)
 
@@ -285,7 +269,7 @@ class Acciones(BaseAcciones):
                         Visibledelete = self.explicitWaitElementoVisibility(15,xpathtdelete)
                         if Visibledelete:
                             self.click(xpathtdelete)
-                            time.sleep(3)
+                            time.sleep(4)
                             pyautogui.press('enter')
             time.sleep(10)                            
             print ("Saliendo ....")
