@@ -113,30 +113,9 @@ class Acciones(BaseAcciones):
 
 
     def buscaryagregarartista(self):
-
-        listartistas=[ 
-        "Love Is Gone","You Are The Reason","When We Were Young","I Love You 3000","When I Look At You",
-        "Impossible","When You Say Nothing At All","MEMORIES","Thank U, Next","A Thousand Years","Perfect","Shallow","Need You Now","On My Way - Alan Walker",
-        "Someone You Loved - Lewis Capaldi ","Blinding Lights - The Weeknd","Dusk Till Dawn - ZAYN","Cheap Thrills - Sia","Im Not Her - Clara Mae","Work From Home - Fifth Harmony",
-        "Dont Wanna  Know - Maroon 5","Shape of You - Ed Sheeran","Send My Love - Landon Austin","Too Good At Goodbyes - Sam Smith","Sugar - Maroon 5",
-        "Body Like A Back Road - Sam Hunt","One More Night - Maroon 5","Friends - Marshmello","Treat You Better - Shawn Mendes","What Are Words - Chris Medina",
-        "Wonder - Shawn Mendes","Everything I Wanted - Billie Eilish","Something Just Like This - The Chainsmokers","Lush Life - Zara Larsson",
-        "Before You Go - Lewis Capaldi","Beyoncé - Halo","Avril Lavigne - When Youre Gone","NSYNC - Bye Bye Bye","Baby One More Time - Britney Spears",
-        "Backstreet Boys - I Want It That Way","Eminem - Love The Way You Lie ft. Rihanna","Justin Timberlake - Cry Me A River","Rihanna - Diamonds","Rihanna - Take A Bow",
-        "Destinys Child - Say My Name","Miley Cyrus - Party In The U.S.A.","Britney Spears - Oops!...I Did It Again","Backstreet Boys - Shape Of My Heart","Britney Spears - Sometimes",
-        "Beyoncé - Single Ladies","NSYNC - Its Gonna Be Me","Rihanna - Umbrella","Rihanna - We Found Love","Alicia Keys - If I Aint Got You"]
-
-
-
-        itemsagregar=[
-         '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[3]/div/div[1]/div[2]/div',
-         '//*[@id="main"]/div/div[2]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/main/div/section/div[2]/div[3]/div[2]/div/div/div[2]/div[4]/div/div[1]/div[2]/div',
-         '//button[text()="Add"]'
-        ]
           
         try: 
-            mylistartistaok1=[]
-            mylistartistas=random.sample(listartistas, 4)
+            mylistartistas=[]
             mylistartistas.append("CANCIONA1")
             mylistartistas.append("CANCIONA1")
             mylistartistas.append("CANCIONA1")
@@ -150,8 +129,8 @@ class Acciones(BaseAcciones):
             mylistartistas.append("CANCIONA3")
             mylistartistas.append("CANCIONA3")
             
-            mylistartistaok=random.sample(mylistartistas, 8)
-            mylistartistaok1=random.sample(mylistartistaok, 8)
+            mylistartistaok=random.sample(mylistartistas, 12)
+            
             print (mylistartistaok1)
         except Exception as e:
             print (e)
@@ -259,6 +238,7 @@ class Acciones(BaseAcciones):
                                 listaresultado[elem].click()
                                 time.sleep (1) 
                                 self.clear(xpathbuscarartista)
+                    
                     except Exception as e:
                         print (e)                 
 
