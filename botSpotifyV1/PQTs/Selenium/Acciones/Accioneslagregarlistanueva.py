@@ -129,9 +129,9 @@ class Acciones(BaseAcciones):
             mylistartistas.append("CANCIONA3")
             mylistartistas.append("CANCIONA3")
             
-            mylistartistaok=random.sample(mylistartistas, 12)
+            mylistartistas=random.sample(mylistartistas, 12)
             
-            print (mylistartistaok1)
+            print (mylistartistas)
         except Exception as e:
             print (e)
 
@@ -146,7 +146,7 @@ class Acciones(BaseAcciones):
 
         visiblebuscarartista= self.explicitWaitElementoVisibility(35,xpathbuscarartista)
         if visiblebuscarartista:
-            for  elem in mylistartistaok1:
+            for  elem in mylistartistas:
                 if elem =='CANCIONA1':
                     try:
                         self.clear(xpathbuscarartista)
@@ -211,7 +211,7 @@ class Acciones(BaseAcciones):
                     except Exception as e:
                         print (e)                 
 
-                if elem =='CANCIONA3':
+                elif elem =='CANCIONA3':
                     try:
                         self.clear(xpathbuscarartista)
                         self.escribir(xpathbuscarartista,"XionSoundS")
